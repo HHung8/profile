@@ -1,358 +1,336 @@
-
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Hưng Nguyễn — Travel & Photography</title>
+    <title>Hưng Nguyễn — Travel & Photography</title>
 
-  <meta
-    name="description"
-    content="Một lập trình viên, những chuyến đi và cuộc sống qua khung hình."
-  />
-  <meta name="theme-color" content="#20251f" />
+    <meta name="description" content="Một lập trình viên, những chuyến đi và cuộc sống qua khung hình." />
+    <meta name="theme-color" content="#20251f" />
 
-  <!-- Open Graph: thông tin khi chia sẻ đường link -->
-  <meta property="og:title" content="Hưng Nguyễn | Travel & Photography" />
-  <meta
-    property="og:description"
-    content="Life, travel and stories through my lens."
-  />
-  <meta property="og:type" content="website" />
+    <!-- Open Graph: thông tin khi chia sẻ đường link -->
+    <meta property="og:title" content="Hưng Nguyễn | Travel & Photography" />
+    <meta property="og:description" content="Life, travel and stories through my lens." />
+    <meta property="og:type" content="website" />
 
-  <!--
+    <!--
     Sau khi deploy, hãy thay URL bên dưới bằng URL ảnh công khai
     và bổ sung og:url với địa chỉ website chính thức.
   -->
-  <!-- <meta property="og:image" content="https://your-domain.com/assets/home/IMG_2848.JPG" /> -->
-  <!-- <meta property="og:url" content="https://your-domain.com/" /> -->
+    <!-- <meta property="og:image" content="https://your-domain.com/assets/home/IMG_2848.JPG" /> -->
+    <!-- <meta property="og:url" content="https://your-domain.com/" /> -->
 
-  <style>
-    :root {
-      --text: #ffffff;
-      --muted: rgba(255, 255, 255, 0.78);
-      --glass: rgba(255, 255, 255, 0.12);
-      --glass-hover: rgba(255, 255, 255, 0.21);
-      --border: rgba(255, 255, 255, 0.32);
-    }
+    <style>
+        :root {
+            --text: #ffffff;
+            --muted: rgba(255, 255, 255, 0.78);
+            --glass: rgba(255, 255, 255, 0.12);
+            --glass-hover: rgba(255, 255, 255, 0.21);
+            --border: rgba(255, 255, 255, 0.32);
+        }
 
-    * {
-      box-sizing: border-box;
-    }
+        * {
+            box-sizing: border-box;
+        }
 
-    html {
-      min-height: 100%;
-      color-scheme: dark;
-    }
+        html {
+            min-height: 100%;
+            color-scheme: dark;
+        }
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      min-height: 100svh;
-      padding: 48px 20px 32px;
+        body {
+            margin: 0;
+            min-height: 100vh;
+            min-height: 100svh;
+            padding: 48px 20px 32px;
 
-      display: flex;
-      justify-content: center;
-      align-items: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-      font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Helvetica,
-        Arial,
-        sans-serif;
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
 
-      color: var(--text);
-      background: #20251f;
+            color: var(--text);
+            background: #20251f;
 
-      position: relative;
-      isolation: isolate;
-    }
+            position: relative;
+            isolation: isolate;
+        }
 
-    /* Ảnh nền cá nhân */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -2;
+        /* Ảnh nền cá nhân */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -2;
 
-      background:
-        url("./assets/home/IMG_2848.JPG")
-        center / cover no-repeat;
+            background:
+                url("./assets/home/IMG_2848.JPG") center / cover no-repeat;
 
-      transform: scale(1.02);
-    }
+            transform: scale(1.02);
+        }
 
-    /* Lớp phủ giúp nội dung dễ đọc */
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
+        /* Lớp phủ giúp nội dung dễ đọc */
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
 
-      background: linear-gradient(
-        180deg,
-        rgba(10, 15, 12, 0.40),
-        rgba(10, 15, 12, 0.68)
-      );
-    }
+            background: linear-gradient(180deg,
+                    rgba(10, 15, 12, 0.40),
+                    rgba(10, 15, 12, 0.68));
+        }
 
-    .card {
-      width: 100%;
-      max-width: 440px;
+        .card {
+            width: 100%;
+            max-width: 440px;
 
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
 
-      text-align: center;
-      animation: appear 0.7s ease both;
-    }
+            text-align: center;
+            animation: appear 0.7s ease both;
+        }
 
-    .avatar {
-      display: block;
-      width: 100px;
-      height: 100px;
-      flex-shrink: 0;
+        .avatar {
+            display: block;
+            width: 100px;
+            height: 100px;
+            flex-shrink: 0;
 
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid rgba(255, 255, 255, 0.85);
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.85);
 
-      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
-    }
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+        }
 
-    .username {
-      margin: 16px 0 8px;
+        .username {
+            margin: 16px 0 8px;
 
-      font-size: 21px;
-      font-weight: 650;
-      letter-spacing: 0.3px;
-    }
+            font-size: 21px;
+            font-weight: 650;
+            letter-spacing: 0.3px;
+        }
 
-    .bio {
-      max-width: 320px;
-      margin: 0 0 10px;
+        .bio {
+            max-width: 340px;
+            margin: 0 0 10px;
 
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.8;
-      font-weight: 400;
-    }
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.8;
+            font-weight: 400;
+        }
 
-    .tagline {
-      margin: 0 0 30px;
+        .tagline {
+            margin: 0 0 30px;
 
-      color: rgba(255, 255, 255, 0.92);
-      font-size: 11px;
-      letter-spacing: 2.2px;
-      text-transform: uppercase;
-    }
+            color: rgba(255, 255, 255, 0.92);
+            font-size: 11px;
+            letter-spacing: 2.2px;
+            text-transform: uppercase;
+        }
 
-    .links {
-      width: 100%;
+        .links {
+            width: 100%;
 
-      display: flex;
-      flex-direction: column;
-      gap: 13px;
-    }
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+        }
 
-    .link-btn {
-      width: 100%;
-      min-height: 58px;
-      padding: 15px 20px;
+        .link-btn {
+            width: 100%;
+            min-height: 58px;
+            padding: 15px 20px;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 11px;
 
-      border: 1px solid var(--border);
-      border-radius: 16px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
 
-      background: var(--glass);
+            background: var(--glass);
 
-      -webkit-backdrop-filter: blur(16px);
-      backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
 
-      box-shadow: 0 5px 22px rgba(0, 0, 0, 0.10);
+            box-shadow: 0 5px 22px rgba(0, 0, 0, 0.10);
 
-      color: var(--text);
-      text-decoration: none;
-      font-size: 15px;
-      font-weight: 550;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 550;
 
-      transition:
-        transform 0.2s ease,
-        background 0.2s ease,
-        border-color 0.2s ease;
-    }
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease,
+                border-color 0.2s ease;
+        }
 
-    .link-btn:hover {
-      background: var(--glass-hover);
-      border-color: rgba(255, 255, 255, 0.6);
-      transform: translateY(-2px);
-    }
+        .link-btn:hover {
+            background: var(--glass-hover);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-2px);
+        }
 
-    .link-btn:active {
-      transform: scale(0.98);
-    }
+        .link-btn:active {
+            transform: scale(0.98);
+        }
 
-    .link-btn:focus-visible {
-      outline: 2px solid #ffffff;
-      outline-offset: 4px;
-    }
+        .link-btn:focus-visible {
+            outline: 2px solid #ffffff;
+            outline-offset: 4px;
+        }
 
-    .icon {
-      width: 21px;
-      height: 21px;
+        .icon {
+            width: 21px;
+            height: 21px;
 
-      display: inline-flex;
-      flex-shrink: 0;
-    }
+            display: inline-flex;
+            flex-shrink: 0;
+        }
 
-    .icon svg {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
+        .icon svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
 
-    .footer {
-      margin-top: 30px;
+        .footer {
+            margin-top: 30px;
 
-      color: rgba(255, 255, 255, 0.76);
-      font-size: 11px;
-      letter-spacing: 1px;
-    }
+            color: rgba(255, 255, 255, 0.76);
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
 
-    @keyframes appear {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
 
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    /* Tối ưu cho điện thoại */
-    @media (max-width: 480px) {
-      body {
-        padding: 36px 22px 26px;
-      }
+        /* Tối ưu cho điện thoại */
+        @media (max-width: 480px) {
+            body {
+                padding: 36px 22px 26px;
+            }
 
-      .avatar {
-        width: 88px;
-        height: 88px;
-      }
+            .avatar {
+                width: 88px;
+                height: 88px;
+            }
 
-      .username {
-        font-size: 19px;
-      }
+            .username {
+                font-size: 19px;
+            }
 
-      .tagline {
-        margin-bottom: 26px;
-        font-size: 10px;
-      }
+            .tagline {
+                margin-bottom: 26px;
+                font-size: 10px;
+            }
 
-      .link-btn {
-        min-height: 56px;
-        border-radius: 14px;
-      }
-    }
+            .link-btn {
+                min-height: 56px;
+                border-radius: 14px;
+            }
+        }
 
-    /* Không áp dụng hover giả lập trên màn hình cảm ứng */
-    @media (hover: none) {
-      .link-btn:hover {
-        transform: none;
-      }
-    }
+        /* Không áp dụng hover giả lập trên màn hình cảm ứng */
+        @media (hover: none) {
+            .link-btn:hover {
+                transform: none;
+            }
+        }
 
-    /* Hỗ trợ người dùng hạn chế chuyển động */
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation: none !important;
-        transition: none !important;
-        scroll-behavior: auto !important;
-      }
-    }
-  </style>
+        /* Hỗ trợ người dùng hạn chế chuyển động */
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <main class="card">
-    <!-- Ảnh đại diện -->
-    <img
-      class="avatar"
-      src="./assets/home/IMG_3875.jpg"
-      alt="Ảnh đại diện của Hưng"
-      width="100"
-      height="100"
-    />
+    <main class="card">
+        <!-- Ảnh đại diện -->
+        <img class="avatar" src="./assets/home/IMG_3875.jpg" alt="Ảnh đại diện của Hưng" width="100" height="100" />
 
-    <!-- Tên tài khoản -->
-    <h1 class="username">@with_nhhung</h1>
+        <!-- Tên tài khoản -->
+        <h1 class="username">@with_nhhung</h1>
 
-    <!-- Giới thiệu ngắn -->
-    <p class="bio">
-      ☕️ I love being a digital nomad at cozy cafes
-    </p>
+        <!-- Giới thiệu ngắn -->
+        <p class="bio">
+            🎞️ Finding stories in ordinary moments.
+        </p>
+        <p class="tagline">
+            Travel · Photography.
+        </p>
 
-    <p class="tagline">
-      Travel · Photography
-    </p>
+        <!-- Các liên kết cá nhân -->
+        <nav class="links" aria-label="Các liên kết cá nhân">
+            <!-- YouTube -->
+            <a class="link-btn" href="https://www.youtube.com/@with_nhhung" target="_blank" rel="noopener noreferrer"
+                aria-label="Xem kênh YouTube with_nhhung">
+                <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="#FF0000">
+                        <path
+                            d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8ZM9.6 15.6V8.4L15.8 12Z" />
+                    </svg>
+                </span>
 
-    <!-- Các liên kết cá nhân -->
-    <nav class="links" aria-label="Các liên kết cá nhân">
-      <!-- YouTube -->
-      <a
-        class="link-btn"
-        href="https://www.youtube.com/@with_nhhung"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Xem kênh YouTube with_nhhung"
-      >
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="#FF0000">
-            <path
-              d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8ZM9.6 15.6V8.4L15.8 12Z"
-            />
-          </svg>
-        </span>
+                YouTube — Travel films
+            </a>
 
-        YouTube — Travel films
-      </a>
+            <!-- TikTok -->
+            <a class="link-btn" href="https://www.tiktok.com/@with_nhhung" target="_blank" rel="noopener noreferrer"
+                aria-label="Xem TikTok with_nhhung">
+                <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M16.6 5.82c-.9-.83-1.42-2-1.44-3.22h-3.06v13.35c0 1.61-1.31 2.92-2.92 2.92-1.61 0-2.92-1.31-2.92-2.92 0-1.61 1.31-2.92 2.92-2.92.3 0 .58.05.85.13v-3.13a5.94 5.94 0 0 0-.85-.06 5.99 5.99 0 0 0-5.99 5.98 5.99 5.99 0 0 0 5.99 5.99 5.99 5.99 0 0 0 5.99-5.99V9.3a8.13 8.13 0 0 0 4.75 1.52V7.76c-1.09 0-2.14-.34-3.02-.94a5.6 5.6 0 0 1-.3-1Z" />
+                    </svg>
+                </span>
+                TikTok — Short journeys
+            </a>
 
-      <!-- TikTok -->
-      <a
-        class="link-btn"
-        href="https://www.tiktok.com/@with_nhhung"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Xem TikTok with_nhhung"
-      >
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M16.6 5.82c-.9-.83-1.42-2-1.44-3.22h-3.06v13.35c0 1.61-1.31 2.92-2.92 2.92-1.61 0-2.92-1.31-2.92-2.92 0-1.61 1.31-2.92 2.92-2.92.3 0 .58.05.85.13v-3.13a5.94 5.94 0 0 0-.85-.06 5.99 5.99 0 0 0-5.99 5.98 5.99 5.99 0 0 0 5.99 5.99 5.99 5.99 0 0 0 5.99-5.99V9.3a8.13 8.13 0 0 0 4.75 1.52V7.76c-1.09 0-2.14-.34-3.02-.94a5.6 5.6 0 0 1-.3-1Z"
-            />
-          </svg>
-        </span>
+            <a class="link-btn" href="/" aria-label="My Travel Journal">
+                <span class="icon" aria-hidden="true">📖</span>
+                My Travel Journal
+            </a>
+        </nav>
 
-        TikTok — Short journeys
-      </a>
-    </nav>
-
-    <footer class="footer">
-      LIFE, IN FRAMES.
-    </footer>
-  </main>
+        <footer class="footer">
+          🎞️ LIFE, IN FRAMES. 🌊 流れのままに。
+        </footer>
+    </main>
 </body>
+
 </html>
