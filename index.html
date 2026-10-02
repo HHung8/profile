@@ -1,204 +1,358 @@
+
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@with_nhhung</title>
-    <style>
-        :root {
-            --glass-bg: rgba(255, 255, 255, 0.28);
-            --glass-border: rgba(255, 255, 255, 0.45);
-            --text-dark: #1a1a1a;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        * {
-            box-sizing: border-box;
-        }
+  <title>Hưng Nguyễn — Travel & Photography</title>
 
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
+  <meta
+    name="description"
+    content="Một lập trình viên, những chuyến đi và cuộc sống qua khung hình."
+  />
+  <meta name="theme-color" content="#20251f" />
 
-        body {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 60px 20px;
+  <!-- Open Graph: thông tin khi chia sẻ đường link -->
+  <meta property="og:title" content="Hưng Nguyễn | Travel & Photography" />
+  <meta
+    property="og:description"
+    content="Life, travel and stories through my lens."
+  />
+  <meta property="og:type" content="website" />
 
-            /* === THAY ẢNH NỀN CỦA BẠN Ở ĐÂY ===
-       Cách 1: đặt file "background.jpg" cùng thư mục với index.html rồi để nguyên dòng dưới.
-       Cách 2: dùng ảnh online: background-image: url('https://.../ten-anh.jpg'); */
-            background-image: url('./assets/home/IMG_2848.JPG');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-color: #2b3a2b;
-            /* màu dự phòng nếu chưa có ảnh */
-        }
+  <!--
+    Sau khi deploy, hãy thay URL bên dưới bằng URL ảnh công khai
+    và bổ sung og:url với địa chỉ website chính thức.
+  -->
+  <!-- <meta property="og:image" content="https://your-domain.com/assets/home/IMG_2848.JPG" /> -->
+  <!-- <meta property="og:url" content="https://your-domain.com/" /> -->
 
-        .card {
-            width: 100%;
-            max-width: 520px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+  <style>
+    :root {
+      --text: #ffffff;
+      --muted: rgba(255, 255, 255, 0.78);
+      --glass: rgba(255, 255, 255, 0.12);
+      --glass-hover: rgba(255, 255, 255, 0.21);
+      --border: rgba(255, 255, 255, 0.32);
+    }
 
-        .avatar {
-            width: 96px;
-            height: 96px;
-            border-radius: 50%;
-            border: 3px solid rgba(255, 255, 255, 0.9);
-            object-fit: cover;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
-            background: #444;
-        }
+    * {
+      box-sizing: border-box;
+    }
 
-        .username {
-            margin-top: 14px;
-            margin-bottom: 28px;
-            padding: 6px 16px;
-            border-radius: 999px;
-            background: rgba(0, 0, 0, 0.55);
-            color: #fff;
-            font-weight: 700;
-            font-size: 15px;
-            letter-spacing: 0.2px;
-            backdrop-filter: blur(4px);
-        }
+    html {
+      min-height: 100%;
+      color-scheme: dark;
+    }
 
-        .links {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      min-height: 100svh;
+      padding: 48px 20px 32px;
 
-        .link-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-            padding: 18px 24px;
-            border-radius: 999px;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(14px) saturate(140%);
-            -webkit-backdrop-filter: blur(14px) saturate(140%);
-            color: var(--text-dark);
-            text-decoration: none;
-            font-size: 17px;
-            font-weight: 600;
-            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
-            transition: transform 0.15s ease, background 0.15s ease;
-        }
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-        .link-btn:hover {
-            background: rgba(255, 255, 255, 0.42);
-            transform: translateY(-2px);
-        }
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
 
-        .link-btn:active {
-            transform: translateY(0px) scale(0.98);
-        }
+      color: var(--text);
+      background: #20251f;
 
-        .icon {
-            width: 20px;
-            height: 20px;
-            flex-shrink: 0;
-            display: inline-flex;
-        }
+      position: relative;
+      isolation: isolate;
+    }
 
-        .icon svg {
-            width: 100%;
-            height: 100%;
-        }
+    /* Ảnh nền cá nhân */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
 
-        @media (max-width: 480px) {
-            .link-btn {
-                font-size: 15px;
-                padding: 16px 18px;
-            }
+      background:
+        url("./assets/home/IMG_2848.JPG")
+        center / cover no-repeat;
 
-            .avatar {
-                width: 84px;
-                height: 84px;
-            }
-        }
-    </style>
+      transform: scale(1.02);
+    }
+
+    /* Lớp phủ giúp nội dung dễ đọc */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+
+      background: linear-gradient(
+        180deg,
+        rgba(10, 15, 12, 0.40),
+        rgba(10, 15, 12, 0.68)
+      );
+    }
+
+    .card {
+      width: 100%;
+      max-width: 440px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      text-align: center;
+      animation: appear 0.7s ease both;
+    }
+
+    .avatar {
+      display: block;
+      width: 100px;
+      height: 100px;
+      flex-shrink: 0;
+
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255, 255, 255, 0.85);
+
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+    }
+
+    .username {
+      margin: 16px 0 8px;
+
+      font-size: 21px;
+      font-weight: 650;
+      letter-spacing: 0.3px;
+    }
+
+    .bio {
+      max-width: 320px;
+      margin: 0 0 10px;
+
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+      font-weight: 400;
+    }
+
+    .tagline {
+      margin: 0 0 30px;
+
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 11px;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+    }
+
+    .links {
+      width: 100%;
+
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+    }
+
+    .link-btn {
+      width: 100%;
+      min-height: 58px;
+      padding: 15px 20px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+
+      border: 1px solid var(--border);
+      border-radius: 16px;
+
+      background: var(--glass);
+
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+
+      box-shadow: 0 5px 22px rgba(0, 0, 0, 0.10);
+
+      color: var(--text);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 550;
+
+      transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .link-btn:hover {
+      background: var(--glass-hover);
+      border-color: rgba(255, 255, 255, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .link-btn:active {
+      transform: scale(0.98);
+    }
+
+    .link-btn:focus-visible {
+      outline: 2px solid #ffffff;
+      outline-offset: 4px;
+    }
+
+    .icon {
+      width: 21px;
+      height: 21px;
+
+      display: inline-flex;
+      flex-shrink: 0;
+    }
+
+    .icon svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .footer {
+      margin-top: 30px;
+
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Tối ưu cho điện thoại */
+    @media (max-width: 480px) {
+      body {
+        padding: 36px 22px 26px;
+      }
+
+      .avatar {
+        width: 88px;
+        height: 88px;
+      }
+
+      .username {
+        font-size: 19px;
+      }
+
+      .tagline {
+        margin-bottom: 26px;
+        font-size: 10px;
+      }
+
+      .link-btn {
+        min-height: 56px;
+        border-radius: 14px;
+      }
+    }
+
+    /* Không áp dụng hover giả lập trên màn hình cảm ứng */
+    @media (hover: none) {
+      .link-btn:hover {
+        transform: none;
+      }
+    }
+
+    /* Hỗ trợ người dùng hạn chế chuyển động */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <main class="card">
+    <!-- Ảnh đại diện -->
+    <img
+      class="avatar"
+      src="./assets/home/IMG_3875.jpg"
+      alt="Ảnh đại diện của Hưng"
+      width="100"
+      height="100"
+    />
 
-    <div class="card">
-        <!-- Thay src bằng ảnh đại diện của bạn -->
-        <img class="avatar" src="./assets/home/IMG_3875.jpg" alt="Avatar">
-        <div class="username">@with_nhhung</div>
-        <div class="links">
+    <!-- Tên tài khoản -->
+    <h1 class="username">@with_nhhung</h1>
 
-            <!-- <a class="link-btn" href="./projects.html" target="_blank" rel="noopener">
-                <span class="icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M3 9.5 12 3l9 6.5" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M5 10v10a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </span>
-                Official Website
-            </a> -->
+    <!-- Giới thiệu ngắn -->
+    <p class="bio">
+      ☕️ I love being a digital nomad at cozy cafes
+    </p>
 
-            <a class="link-btn" href="./trips.html" target="_blank" rel="noopener">
-                <span class="icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2">
-                        <path d="M4 7h3l2-2h6l2 2h3a1 1 0 0 1 1 1v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a1 1 0 0 1 1-1z"
-                            stroke-linecap="round" stroke-linejoin="round" />
-                        <circle cx="12" cy="13" r="4" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                </span>
-                Gallery
-            </a>
+    <p class="tagline">
+      Travel · Photography
+    </p>
 
-            <a class="link-btn" href="https://www.youtube.com/@with_nhhung" target="_blank" rel="noopener">
-                <span class="icon">
-                    <svg viewBox="0 0 24 24" fill="#FF0000">
-                        <path
-                            d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8ZM9.6 15.6V8.4L15.8 12Z" />
-                    </svg>
-                </span>
-                with_nhhung
-            </a>
+    <!-- Các liên kết cá nhân -->
+    <nav class="links" aria-label="Các liên kết cá nhân">
+      <!-- YouTube -->
+      <a
+        class="link-btn"
+        href="https://www.youtube.com/@with_nhhung"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Xem kênh YouTube with_nhhung"
+      >
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="#FF0000">
+            <path
+              d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8ZM9.6 15.6V8.4L15.8 12Z"
+            />
+          </svg>
+        </span>
 
-            <a class="link-btn" href="https://www.tiktok.com/@with_nhhung" target="_blank" rel="noopener">
-                <span class="icon">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M16.6 5.82c-.9-.83-1.42-2-1.44-3.22h-3.06v13.35c0 1.61-1.31 2.92-2.92 2.92-1.61 0-2.92-1.31-2.92-2.92 0-1.61 1.31-2.92 2.92-2.92.3 0 .58.05.85.13v-3.13a5.94 5.94 0 0 0-.85-.06 5.99 5.99 0 0 0-5.99 5.98 5.99 5.99 0 0 0 5.99 5.99 5.99 5.99 0 0 0 5.99-5.99V9.3a8.13 8.13 0 0 0 4.75 1.52V7.76c-1.09 0-2.14-.34-3.02-.94a5.6 5.6 0 0 1-.3-1Z" />
-                    </svg>
-                </span>
-                HHưng
-            </a>
+        YouTube — Travel films
+      </a>
 
+      <!-- TikTok -->
+      <a
+        class="link-btn"
+        href="https://www.tiktok.com/@with_nhhung"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Xem TikTok with_nhhung"
+      >
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M16.6 5.82c-.9-.83-1.42-2-1.44-3.22h-3.06v13.35c0 1.61-1.31 2.92-2.92 2.92-1.61 0-2.92-1.31-2.92-2.92 0-1.61 1.31-2.92 2.92-2.92.3 0 .58.05.85.13v-3.13a5.94 5.94 0 0 0-.85-.06 5.99 5.99 0 0 0-5.99 5.98 5.99 5.99 0 0 0 5.99 5.99 5.99 5.99 0 0 0 5.99-5.99V9.3a8.13 8.13 0 0 0 4.75 1.52V7.76c-1.09 0-2.14-.34-3.02-.94a5.6 5.6 0 0 1-.3-1Z"
+            />
+          </svg>
+        </span>
 
-            <a class="link-btn" href="https://www.instagram.com/shadow_fufun/" target="_blank" rel="noopener">
-                <span class="icon">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9Zm4.5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm5.25-2.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Z" />
-                    </svg>
-                </span>
-                shadown_fufun
-            </a>
+        TikTok — Short journeys
+      </a>
+    </nav>
 
-        </div>
-    </div>
-
+    <footer class="footer">
+      LIFE, IN FRAMES.
+    </footer>
+  </main>
 </body>
-
 </html>
